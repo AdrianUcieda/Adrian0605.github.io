@@ -1,1 +1,562 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Adrian Ucieda | Mechanical Engineering</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b1120;
+            color: #e5e7eb;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11, 17, 32, 0.95);
+            border-bottom: 1px solid #243044;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-content {
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            padding: 80px 0;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .eyebrow {
+            color: #38bdf8;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+
+        .hero h2 {
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            font-weight: normal;
+            color: #94a3b8;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            font-size: 1.15rem;
+            color: #cbd5e1;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .button-primary {
+            background: #38bdf8;
+            color: #07111f;
+        }
+
+        .button-primary:hover {
+            background: #7dd3fc;
+            transform: translateY(-2px);
+        }
+
+        .button-secondary {
+            border: 1px solid #475569;
+            color: #e2e8f0;
+        }
+
+        .button-secondary:hover {
+            border-color: #38bdf8;
+            color: #38bdf8;
+        }
+
+        /* Sections */
+        section {
+            padding: 90px 0;
+            border-top: 1px solid #1e293b;
+        }
+
+        .section-title {
+            font-size: 2.3rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            color: #94a3b8;
+            margin-bottom: 40px;
+            max-width: 700px;
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .about-text p {
+            color: #cbd5e1;
+            margin-bottom: 15px;
+        }
+
+        .highlight-box {
+            background: #111827;
+            border: 1px solid #243044;
+            border-left: 4px solid #38bdf8;
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        .highlight-box h3 {
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .highlight-box p {
+            color: #94a3b8;
+        }
+
+        /* Projects */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background: #111827;
+            border: 1px solid #243044;
+            border-radius: 10px;
+            padding: 28px;
+            transition: 0.25s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+        }
+
+        .project-number {
+            color: #38bdf8;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            color: #ffffff;
+            font-size: 1.35rem;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: #1e293b;
+            color: #7dd3fc;
+            padding: 5px 9px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        /* Skills */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill {
+            background: #111827;
+            border: 1px solid #334155;
+            padding: 12px 18px;
+            border-radius: 6px;
+            color: #e2e8f0;
+        }
+
+        /* Contact */
+        .contact-box {
+            background: #111827;
+            border: 1px solid #243044;
+            border-radius: 10px;
+            padding: 45px;
+            text-align: center;
+        }
+
+        .contact-box p {
+            color: #94a3b8;
+            margin: 15px auto 25px;
+            max-width: 600px;
+        }
+
+        .email {
+            color: #38bdf8;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid #1e293b;
+            padding: 30px 0;
+            text-align: center;
+            color: #64748b;
+        }
+
+        /* Mobile */
+        @media (max-width: 800px) {
+            .nav-links {
+                gap: 12px;
+                font-size: 0.85rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: 75vh;
+            }
+
+            h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .nav-content {
+                height: auto;
+                padding: 15px 0;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-content">
+            <a href="#home" class="logo">ADRIAN<span>.</span></a>
+
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero" id="home">
+        <div class="container hero-content">
+            <div class="eyebrow">Mechanical Engineering</div>
+
+            <h1>Adrian Ucieda</h1>
+
+            <h2>Senior Mechanical Engineering Student</h2>
+
+            <p>
+                Engineering student focused on CAD, additive manufacturing,
+                mechanical design, and hands-on problem solving. Expected to
+                graduate in May 2027.
+            </p>
+
+            <div class="buttons">
+                <a href="#projects" class="button button-primary">
+                    View My Projects
+                </a>
+
+                <a href="#contact" class="button button-secondary">
+                    Contact Me
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+
+            <p class="section-subtitle">
+                A mechanical engineering student building experience through
+                design, fabrication, and technical projects.
+            </p>
+
+            <div class="about-grid">
+
+                <div class="about-text">
+                    <p>
+                        I am a senior Mechanical Engineering student with an
+                        expected graduation date of May 2027.
+                    </p>
+
+                    <p>
+                        My interests include mechanical design, CAD,
+                        additive manufacturing, and developing practical
+                        solutions to engineering problems.
+                    </p>
+
+                    <p>
+                        Through academic and personal projects, I have gained
+                        experience taking ideas from digital designs to
+                        physical prototypes using 3D printing and other
+                        hands-on methods.
+                    </p>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>What I Bring</h3>
+
+                    <p>
+                        CAD modeling, mechanical design, 3D printing,
+                        prototyping, technical problem solving, and a
+                        willingness to learn new engineering tools and
+                        technologies.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+
+            <p class="section-subtitle">
+                A selection of academic and personal projects demonstrating
+                my engineering, design, and technical skills.
+            </p>
+
+            <div class="projects">
+
+                <!-- Project 1 -->
+                <article class="project-card">
+                    <div class="project-number">01 / ENGINEERING DESIGN</div>
+
+                    <h3>3D Printed Egg Drop Project</h3>
+
+                    <p>
+                        Designed and 3D printed a solution for an egg drop
+                        engineering challenge, applying mechanical design,
+                        prototyping, and iterative problem solving.
+                    </p>
+
+                    <div class="project-tags">
+                        <span class="tag">CAD</span>
+                        <span class="tag">3D Printing</span>
+                        <span class="tag">Design</span>
+                        <span class="tag">Prototyping</span>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-card">
+                    <div class="project-number">02 / PERSONAL PROJECTS</div>
+
+                    <h3>Personal 3D Printing Projects</h3>
+
+                    <p>
+                        A collection of personal projects involving CAD
+                        modeling, design iteration, and additive manufacturing.
+                        More project details and photos will be added here.
+                    </p>
+
+                    <div class="project-tags">
+                        <span class="tag">SolidWorks</span>
+                        <span class="tag">Fusion 360</span>
+                        <span class="tag">3D Printing</span>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project-card">
+                    <div class="project-number">03 / DATA & CODING</div>
+
+                    <h3>Statistics Coding Project</h3>
+
+                    <p>
+                        Applied coding and statistical concepts to analyze
+                        data, develop calculations, and communicate technical
+                        results.
+                    </p>
+
+                    <div class="project-tags">
+                        <span class="tag">Coding</span>
+                        <span class="tag">Statistics</span>
+                        <span class="tag">Data Analysis</span>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+
+            <p class="section-subtitle">
+                Software and technical areas I have experience working with.
+            </p>
+
+            <div class="skills">
+                <div class="skill">SolidWorks</div>
+                <div class="skill">AutoCAD</div>
+                <div class="skill">Fusion 360</div>
+                <div class="skill">3D Printing</div>
+                <div class="skill">CAD</div>
+                <div class="skill">Mechanical Design</div>
+                <div class="skill">Prototyping</div>
+                <div class="skill">Data Analysis</div>
+                <div class="skill">Statistics</div>
+                <div class="skill">Technical Problem Solving</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-box">
+                <h2 class="section-title">Let's Connect</h2>
+
+                <p>
+                    Interested in connecting about mechanical engineering,
+                    projects, internships, or potential opportunities?
+                </p>
+
+                <a
+                    href="mailto:adrian.ucieda@gmail.com"
+                    class="email"
+                >
+                    adrian.ucieda@gmail.com
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Adrian Ucieda. Mechanical Engineering Portfolio.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+```
 
